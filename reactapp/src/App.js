@@ -1,108 +1,76 @@
-import React, { useState } from 'react';
-import Button from './components/UI/Button/Button';
-import Card from './components/UI/Card/Card';
-
-const quizData = [
-  {
-    question: 'Who is the father of our nation ?',
-    options: ['Mahatma Gandhi', 'Jawaharlal Nehru', 'Donald Trump', 'Barrak Obama'],
-    answer: 'Mahatma Gandhi',
-  },
-  {
-    question: 'What color is are the leaves ?',
-    options: ['Blue', 'Red', 'Yellow', 'Green'],
-    answer: 'Green',
-  },
-  {
-      question: 'What color is the sky ?',
-      options: ['Blue', 'Red', 'Yellow', 'Green'],
-      answer: 'Blue',
-    },
-    {
-      question: 'What color is the sky ?',
-      options: ['Blue', 'Red', 'Yellow', 'Green'],
-      answer: 'Blue',
-    },
-    {
-      question: 'What color is the fire ?',
-      options: ['Blue', 'Red', 'Yellow', 'Green'],
-      answer: 'Red',
-    },
-
-];
-const App = () => {
-
-  const [showQuiz, setShowQuiz] = useState(false);
-  const [selectedOptions, setSelectedOptions] = useState(Array(quizData.length).fill(''));
-  const [score, setScore] = useState(0);
-  const [showResults, setShowResults] = useState(false);
-
-  const handleStartQuizClick = () => {
-    setShowQuiz(true);
+import React from "react";
+import { useState, useEffect } from "react";
+export default function Stopwatch() {
+  const [hour, sethour] = useState(0);
+  const [min, setmin] = useState(0);
+  const [sec, setsec] = useState(0);
+  const [stop, setStop] = useState(true);
+  const [dis, setdis] = useState(true);
+  const [isstart, setstart] = useState(true);
+  const [ispause, setpause] = useState(false);
+  const onStart = () => {
+    setStop(false);
+    setdis(false);
+    setstart(false);
   };
-
-  const handleOptionClick = (option, index) => {
-    const newSelectedOptions = [...selectedOptions];
-    newSelectedOptions[index] = option;
-    setSelectedOptions(newSelectedOptions);
-
-    const correctAnswer = quizData[index].answer;
-
-    if (option === correctAnswer) {
-      setScore(score + 1);
+  const onStop = () => {
+    setStop(true);
+    setpause(true);
+  };
+  const onReset = () => {
+    sethour(0);
+    setmin(0);
+    setsec(0);
+  };
+  const onResume = () => {
+    setStop(false);
+    setpause(false);
+  };
+  useEffect(() => {
+    let interval = null;
+    if (!stop) {
+      interval = setInterval(() => {
+        if (min > 59) {
+          sethour(hour + 1);
+          setmin(0);
+          clearInterval(interval);
+        }
+        if (sec > 59) {
+          setmin(min + 1);
+          setsec(0);
+          clearInterval(interval);
+        }
+        if (sec <= 59) {
+          setsec(sec + 1);
+        }
+      }, 1000);
+    } else {
+      clearInterval(interval);
     }
-  };
-
-  const handleShowResultsClick = () => {
-    setShowResults(true);
-  };
-
-  const handleStartAgainClick = () => {
-    setShowQuiz(false);
-    setSelectedOptions(Array(quizData.length).fill(''));
-    setScore(0);
-    setShowResults(false);
-  };
-
+    return () => {
+      clearInterval(interval);
+    };
+  });
   return (
-    <div>
-      <h1>Quizz App</h1>
-      {!showQuiz && (
-        <Button onClick={handleStartQuizClick}>Start Quiz</Button>
+    <div className="App">
+      <p data-testid="time">
+        {hour < 10 ? "0" + hour : hour} : {min < 10 ? "0" + min : min} :{" "}
+        {sec < 10 ? "0" + sec : sec}
+      </p>
+
+      {isstart === false ? (
+        ispause === true ? (
+          <button data-testid="resume"onClick={onResume}>resume</button>
+        ) : (
+          <button data-testid="pause" onClick={onStop}>pause</button>
+        )
+      ) : (
+        <button data-testid="start" onClick={onStart}>start</button>
       )}
-      {showQuiz && !showResults && (
-        <div>
-          {quizData.map((question, index) => (
-            <Card key={index}>
-              <h3>{question.question}</h3>
-              {question.options.map((option) => (
-                <Button
-                  key={option}
-                  onClick={() => handleOptionClick(option, index)}
-                  disabled={selectedOptions[index] !== ''}
-                  style={{
-                    backgroundColor: selectedOptions[index] === option ? 'green' : '',
-                  }}
-                >
-                  {option}
-                </Button>
-              ))}
-            </Card>
-          ))}
-          {selectedOptions.every((option) => option !== '') && (
-            <Button onClick={handleShowResultsClick}>Show Results</Button>
-          )}
-        </div>
-      )}
-      {showResults && (
-        <div>
-          <p>Your have answered {score}/{quizData.length} Correctly</p>
-          <Button onClick={handleStartAgainClick}>Start Quiz</Button>
-        </div>
-      )}
+
+      <button data-testid="reset" disabled={dis} onClick={onReset}>
+        reset
+      </button>
     </div>
   );
-};
-export default App;
-
-
+}
