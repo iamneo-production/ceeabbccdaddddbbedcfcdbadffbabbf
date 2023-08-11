@@ -27,7 +27,17 @@ export default function Stopwatch() {
         setpause(false);
     };
     useEffect(() => {
-        let interval =
+        let interval = null;
+        if(!stop){
+            interval = setInterval(() => {
+                if(min > 59) {
+
+
+
+                }
+            }
+            
+        }
     })
 
 }
