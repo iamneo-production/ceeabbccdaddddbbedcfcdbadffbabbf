@@ -70,7 +70,7 @@ export default function Stopwatch() {
 
       <button data-testid="reset" disabled={dis} onClick={onReset}>
         reset
-      </button>
+      </butto 
     </div>
   );
 }
