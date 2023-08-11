@@ -30,47 +30,42 @@ export default function Stopwatch() {
     let interval = null;
     if (!stop) {
       interval = setInterval(() => {
-        if (min > 59) {
-          sethour(hour + 1);
-          setmin(0);
-          clearInterval(interval);
-        }
-        if (sec > 59) {
-          setmin(min + 1);
-          setsec(0);
-          clearInterval(interval);
-        }
-        if (sec <= 59) {
-          setsec(sec + 1);
-        }
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
-    return () => {
-      clearInterval(interval);
-    };
-  });
-  return (
-    <div className="App">
-      <p data-testid="time">
-        {hour < 10 ? "0" + hour : hour} : {min < 10 ? "0" + min : min} :{" "}
-        {sec < 10 ? "0" + sec : sec}
-      </p>
 
-      {isstart === false ? (
-        ispause === true ? (
-          <button data-testid="resume"onClick={onResume}>resume</button>
-        ) : (
-          <button data-testid="pause" onClick={onStop}>pause</button>
-        )
-      ) : (
-        <button data-testid="start" onClick={onStart}>start</button>
-      )}
 
-      <button data-testid="reset" disabled={dis} onClick={onReset}>
-        reset
-      </butto 
-    </div>
-  );
-}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+ 
+
+
