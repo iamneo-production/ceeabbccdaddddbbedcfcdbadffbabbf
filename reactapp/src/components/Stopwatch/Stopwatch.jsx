@@ -64,15 +64,17 @@ export default function Stopwatch() {
          </p>
          {isstart === false ? (
             ispause === true ? (
-                <button data-testid="resume"onClick={onResume}>resume</button>
+                <button data-testid="resume" onClick={onResume}>resume</button>
             ) : (
-                <button data-testid="pause"onClick={onStop}>pause</button>
+                <button data-testid="pause" onClick={onStop}>pause</button>
             ) : (
-                
-            )
+                <button data-testid="start" onClick={onStart}>start</button>
+            )}
+                <button data-testid="reset"disabled={dis} onClick={onReset}>reset</button>
+
             
 
-         )}
+        )}
         </div>
     )
-}
+} 
