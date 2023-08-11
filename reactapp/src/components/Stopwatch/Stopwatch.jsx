@@ -74,7 +74,7 @@ export default function Stopwatch() {
 
             
 
-        )}
+
         </div>
-    )
+    );
 } 
