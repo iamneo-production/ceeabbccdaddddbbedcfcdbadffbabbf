@@ -54,6 +54,13 @@ export default function Stopwatch() {
         return () =>{
             clearInterval(interval);
         };
-    }) 
-
+    });
+    return (
+        <div className="App">
+         <p data-testid="time">
+            {hour < 10 ? "0" + hour : hour}:
+            {min < 10 ? "0" + min : min}:{" "}
+         </p>
+        </div>
+    )
 }
