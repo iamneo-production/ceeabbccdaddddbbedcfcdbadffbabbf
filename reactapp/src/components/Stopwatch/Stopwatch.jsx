@@ -13,6 +13,13 @@ export default function Stopwatch() {
         setdis(false);
         setstart(false);
     };
-    const onStop
+    const onStop = () => {
+        setStop(true);
+        setpause(true);
+    };
+    const onReset = () => {
+        Sethour(0);
+        setmin
+    }
 
 }
