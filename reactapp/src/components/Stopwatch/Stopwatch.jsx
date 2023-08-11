@@ -34,7 +34,7 @@ export default function Stopwatch() {
                     sethour(hour + 1);
                     setmin(0);
                     clearInterval(interval);
-                
+ 
 
                 }
                 if(sec > 59) {
@@ -42,10 +42,18 @@ export default function Stopwatch() {
                     setsec(0);
                     clearInterval(interval);
                 }
-                
-            }
+                if(sec <= 59) {
+                    setsec(sec + 1);
+                }
+            }, 1000);
             
         }
-    })
+        else {
+            clearInterval(interval);
+        }
+        return () =>{
+            clearInterval(interval);
+        };
+    }) 
 
 }
