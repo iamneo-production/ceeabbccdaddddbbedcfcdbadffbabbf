@@ -18,8 +18,8 @@ export default function Stopwatch() {
         setpause(true);
     };
     const onReset = () => {
-        Sethour(0);
-        Setmin(0);
+        sethour(0);
+        setmin(0);
         setsec(0);
     };
     const onResume = () => {
@@ -31,10 +31,18 @@ export default function Stopwatch() {
         if(!stop){
             interval = setInterval(() => {
                 if(min > 59) {
-
-
+                    sethour(hour + 1);
+                    setmin(0);
+                    clearInterval(interval);
+                
 
                 }
+                if(sec > 59) {
+                    setmin(min + 1);
+                    setsec(0);
+                    clearInterval(interval);
+                }
+                
             }
             
         }
