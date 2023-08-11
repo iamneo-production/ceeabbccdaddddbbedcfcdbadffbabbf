@@ -19,7 +19,15 @@ export default function Stopwatch() {
     };
     const onReset = () => {
         Sethour(0);
-        setmin
-    }
+        Setmin(0);
+        setsec(0);
+    };
+    const onResume = () => {
+        setStop(false);
+        setpause(false);
+    };
+    useEffect(() => {
+        let interval =
+    })
 
 }
