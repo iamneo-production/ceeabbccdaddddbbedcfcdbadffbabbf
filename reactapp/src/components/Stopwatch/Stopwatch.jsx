@@ -48,41 +48,4 @@
                         setStop(true);
                         setpause(true);
                       };
-                      const onReset = () => {
-                        sethour(0);
-                        setmin(0);
-                        setsec(0);
-                      };
-                      const onResume = () => {
-                        setStop(false);
-                        setpause(false);
-                      };
-                      useEffect(() => {
-                        let interval = null;
-                        if (!stop) {
-                          interval = setInterval(() => {
-                            if (min > 59) {
-                              sethour(hour + 1);
-                              setmin(0);
-                              clearInterval(interval);
-                            }
-                            if (sec > 59) {
-                              setmin(min + 1);
-                              setsec(0);
-                              clearInterval(interval);
-                            }
-                            if (sec <= 59) {
-                              setsec(sec + 1);
-                            }
-                          }, 1000);
-                        } else {
-                          clearInterval(interval);
-                        }
-                        return () => {
-                          clearInterval(interval);
-                        };
-                      });
-                      return (
-                        <div className="App">
-                          <p data-testid="time">
-                            {hou
+                      co
