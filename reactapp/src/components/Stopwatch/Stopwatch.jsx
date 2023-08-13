@@ -1,8 +1,8 @@
-import React from "react";
+port React from "react";
 import { useState, useEffect } from "react";
 export default function Stopwatch() {
     const [hour, Sethour] = useState(0);
-    const [min, Setmin] = useState(0);
+    const [min, Setmin] =eState(0);
     const [sec, setsec] = useState(0);
     const [stop, setStop] = useState(true);
     const [dis, setdis] = useState(true);
@@ -64,17 +64,4 @@ export default function Stopwatch() {
          </p>
          {isstart === false ? (
             ispause === true ? (
-                <button data-testid="resume" onClick={onResume}>resume</button>
-            ) : (
-                <button data-testid="pause" onClick={onStop}>pause</button>
-            ) : (
-                <button data-testid="start" onClick={onStart}>start</button>
-            )}
-                <button data-testid="reset"disabled={dis} onClick={onReset}>reset</button>
-
-            
-
-
-        </div>
-    );
-} 
+                <button data-testid="resume" onClick={onResume}>resu
