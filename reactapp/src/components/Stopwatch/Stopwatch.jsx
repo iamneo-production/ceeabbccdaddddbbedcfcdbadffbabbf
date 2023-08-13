@@ -1,12 +1,4 @@
-port React from "react";
-import { tion Stopwatch() {
-    const [hour, Sethour] = useState(0);
-    const [min, Setmin] =eState(0);
-    const [sec, setsec] = useState(0);
-    const [stop, setStop] = useState(true);
-    const [dis, setdis] = useState(true);
-    const [isstart, setstart] = useState(true);
-    const [ispause, setpause] = useState(false);
+
     const onStart = () => {
         setStop(false);
         setdis(false);
@@ -93,6 +85,4 @@ import { tion Stopwatch() {
                       return (
                         <div className="App">
                           <p data-testid="time">
-                            {hour < 10 ? "0" + hour : hour} : {min < 10 ? "0" + min : min} :{" "}
-                            {sec < 10 ? "0" + sec : sec}
-                    }
+                            {hou
