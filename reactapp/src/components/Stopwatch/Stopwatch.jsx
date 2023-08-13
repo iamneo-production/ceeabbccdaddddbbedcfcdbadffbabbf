@@ -95,9 +95,4 @@ import { tion Stopwatch() {
                           <p data-testid="time">
                             {hour < 10 ? "0" + hour : hour} : {min < 10 ? "0" + min : min} :{" "}
                             {sec < 10 ? "0" + sec : sec}
-                          </p>
-                    
-                          {isstart === false ? (
-                            ispause === true ? (
-                              <button data-testid="resume"onClick=
                     }
